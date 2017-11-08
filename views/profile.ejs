@@ -6,51 +6,87 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
     <link rel="stylesheet" href="./public/css/profilepage.css">
 </head>
 
 <body>
-    <div class="navs">
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#"><strong>welcome</strong>:<%= user.username %></a>
-            </li>         
-            <li class="nav-item">
-                <a class="nav-link active" href="/logout">log off</a>
-            </li>
-        </ul>
-    </div>
-    <div class="container blog">
+    <div class="container">
+        <div class="navs">
+            
+        </div>
 
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
+        <nav class="navbar" id="nav">
+            <a class="logo" id="small-S">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZxlZ3ZCDeSOw72yjVkPVxayvHmeYviztULz4piZ6y8so3t5tuaA" width="30" height="30" alt="s-icon">
+            </a>
+
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"><strong>Welcome</strong>:<%= user.username %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger" href="/logout">log off</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="haiku-post">
+            <div class="col-md-12 col-sm-12">
                 <div class="well">
                     <ul>
                         <% for ( i in data) { %>
                             <li class="alert alert-danger">
-                                <%= data[i].post %>
+                                <div class="content">
+                                    <p><%= data[i].post_line_1 %></p>
+                                    <p><%= data[i].post_line_2 %></p>
+                                    <p><%= data[i].post_line_3 %></p>
+                                </div>
                             </li>
-                        <% } %>
+                            <% } %>
                     </ul>
                 </div>
             </div>
-            
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-12 col-sm-12">
                 <form action="/post" method="post">
                     <div class="form-group">
-                        <label>post</label>
+                        <label class="haiku-title">Haiku</label>
                         <textarea rows="3" class="form-control" name="hik"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-warning btn-lg">post</button>
+                    <button type="submit" class="btn btn-warning btn-lg">Share</button>
                 </form>
             </div>
         </div>
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
+            Rules of Haiku
+        </button>
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Rules of Haiku</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>"Haiku" is a traditional form of Japanese poetry consisting of three lines and 17 syllables in total. There are five syllables in the first line, seven in the second, and five in the third. The lines rarely rhyme.
+            Here's a haiku to help you remember:<br>
+            <br>
+            "I am first with five<br>
+            Then seven in the middle--<br>
+            Five again to end."<br>
+            <br>
+            Traditional haikus usually include a personal observation, a concrete seasonal reference, and a pivot word or turning point that introduces an insight/shock of awareness, but you can write them about anything you want. Be creative! </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

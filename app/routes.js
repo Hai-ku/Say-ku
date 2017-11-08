@@ -69,6 +69,12 @@ module.exports = function(app, passport) {
         return new Promise(function(resolve, reject) {
             var queryStr = "SELECT * FROM posts WHERE auther = " + req.user.id;
             connection.query(queryStr, function(err, data) {
+                // var output = [];
+                // for ( i in data){
+                //   output.push( data[i].post_line_1 + '\r\n' +data[i].post_line_2+ '\r\n' +data[i].post_line_3 );
+                // }
+                
+
                 res.render('profile.ejs', {
                     user: req.user,
                     data: data,
@@ -83,7 +89,8 @@ module.exports = function(app, passport) {
         return new Promise(function(resolve, reject) {
             var results = Haiku(req.body.hik);
             if (results == 1) {
-                var queryStr = "INSERT INTO posts (auther,post) VALUES (" + parseInt(req.user.id) + ',"' + req.body.hik + '");'
+                parts = req.body.hik.split("\n");
+                var queryStr = "INSERT INTO posts (auther,post_line_1,post_line_2,post_line_3) VALUES (" + parseInt(req.user.id) + ',"' + parts[0] + '","' +parts[1] + '","' +parts[2] + '");'
                 connection.query(queryStr, function(err, data) {
                     resolve(res.redirect('/profile'));
                 });
