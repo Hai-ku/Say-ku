@@ -16,14 +16,13 @@
    
     <div class="container">
         <div class="jumbotron">
-        <div class="jumbo-text">
             <h1 class="display-3">Sayku</h1>
             
             <p class="lead">Be Mindful. Stimulate Your Creativity. Destress.</p>
             
             <hr class="my-4">
             
-            <p>Writing haikus encourages higher order thinking, stimulates creativity, and allows the writer to practice mindfulness. It can also be used as a tool for learning difficult concepts by asking the writer to apply their knowledge, allowing for enhanced understanding of curriculum.</p>
+            <p class="intro-haiku">Writing haikus encourages higher order thinking, stimulates creativity, and allows the writer to practice mindfulness. It can also be used as a tool for learning difficult concepts by asking the writer to apply their knowledge, allowing for enhanced understanding of curriculum.</p>
             
 
             <!-- Button trigger modal -->
@@ -33,39 +32,51 @@
 
             <p></p>
 
-            <a href="/login" class="btn btn-primary">Login</a>
-            <a href="/signup" class="btn btn-primary">Signup</a>
-
+            <div class="user-action">
+                <a href="/login" class="btn btn-primary">Login</a>
+                <a href="/signup" class="btn btn-primary">Signup</a>
+            </div>
         </div>
     </div>
 
-        <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">How do I write a Haiku</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                         <div class="modal-body">
-                            <p>"Haiku" is a traditional form of Japanese poetry. Haiku poems consist of 3 lines. The first and last lines of a Haiku have 5 syllables and the middle line has 7 syllables. The lines rarely rhyme.</p>
+    <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">How do I write a Haiku</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>"Haiku" is a traditional form of Japanese poetry. Haiku poems consist of 3 lines. The first and last lines of a Haiku have 5 syllables and the middle line has 7 syllables. The lines rarely rhyme.</p>
 
-                            <hr>
+                        <hr>
 
-                            Here's a Haiku to help you remember: <br>
-                            I am first with five 5<br>
-                            Then seven in the middle 7<br>
-                            Five again to end. 5<br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        Here's a Haiku to help you remember: <br>
+                        <table>
+                            <tr>
+                                <td>I am first with five</th>
+                                <td>5</th>
+                            </tr>
+                            <tr>
+                                <td>Then seven in the middle</th>
+                                <td>7</th>
+                            </tr>
+                            <tr>
+                                <td>Five again to end.</th>
+                                <td>5</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
+        </div>
 
 
     <!-- Optional JavaScript -->
