@@ -1,9 +1,9 @@
 // config/database.js
 module.exports = {
     'connection': {
-        'host': 'localhost',
+        "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock",
         'user': 'root',
-        'password': 'Stow44224'
+        'password': 'root'
     },
 	'database': 'my_schema',
     'users_table': 'users',

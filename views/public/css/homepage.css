@@ -1,0 +1,21 @@
+body {
+	text-align: center;
+	background-image: url("https://cdn.theculturetrip.com/wp-content/uploads/2017/03/cherry-blossoms-1024x683.jpg");
+	height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {
+	opacity: 0.8;
+	filter: alpha(opacity=50);
+}
+
+.jumbotron:hover {
+	opacity: 0.65;
+	filter: alpha(opacity=100);
+}
+
+
+
