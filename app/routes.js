@@ -86,10 +86,15 @@ module.exports = function(app, passport) {
     app.post('/post', function(req, res) {
         var user = req.user;
 		return new Promise(function(resolve, reject){
+			var results = Haiku(req.body.hik);
+			if (results == 1){
 			var queryStr = "INSERT INTO posts (auther,post) VALUES ("+parseInt(req.user.id) +',"'+req.body.hik+'");'
 			connection.query(queryStr, function(err, data){
 		        resolve(res.redirect('/profile'));
-	    	});
+	    	});}else{
+				resolve(res.redirect('/profile'));
+	    	}
+
     	});	
 
     });
@@ -120,7 +125,41 @@ function isLoggedIn(req, res, next) {
 
 
 
+var syllableCount = function(string) {
+  //http://harcourtprogramming.co.uk/blogs/benh/tag/javascript/
+  var matches = string.match(syllableCount.pattern);
+  if (matches == null) return 0; // No vowels found...
+  
+  var currentSyllableCount = matches.length;
+  
+  if (string.match(syllableCount.silentE) != null) currentSyllableCount -= string.match(syllableCount.silentEs).length;
+  
+  return currentSyllableCount;
+}
+syllableCount.pattern  = new RegExp("[aeiouy]([^aieouy]|$)", 'gim'); // Vowel followed be non-vowel or end of string. Matches all in multi-line string, case insensitively.
+syllableCount.silentE  = new RegExp("[aeiouy][^aeiouy]e([^a-z]s|[^a-z]|$)", 'i'); // words ending vce / vces where v is some vowel, c is some consonant
+syllableCount.silentEs = new RegExp("[aeiouy][^aeiouy]e([^a-z]s|[^a-z]|$)", 'gim'); // as above, but match all in multi=line string (previous matches only first - used to find if there are any quickly)
 
 
 
-
+var Haiku = function(str){
+  parts = str.split("\n");
+  if(parts.length != 3){
+    return 0;
+  }
+  else {
+    parts.forEach(function(part){
+      //console.log("Part length: " + part.length);
+      //console.log("Syllables: " + syllableCount(part));
+    });
+    //console.log("Parts length: "+ parts.length);
+    //console.log(str);
+    if(syllableCount(parts[0]) == 5 && syllableCount(parts[1]) == 7 && syllableCount(parts[2]) == 5){
+      //console.log("this is a haiku");
+     return 1;
+    }
+    else {
+       return 0;
+    }
+  }
+}
