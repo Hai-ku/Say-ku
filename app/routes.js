@@ -1,7 +1,10 @@
 // app/routes.js
 
 var mysql = require('mysql');
-var connection = mysql.createConnection(require('../config/connnection.js'));
+var dbconfig = require('../config/database');
+var connection = mysql.createConnection(dbconfig.connection);
+connection.query('USE ' + dbconfig.database);
+
 
 module.exports = function(app, passport) {
     // =====================================
@@ -69,6 +72,8 @@ module.exports = function(app, passport) {
         return new Promise(function(resolve, reject) {
             var queryStr = "SELECT * FROM posts WHERE auther = " + req.user.id;
             connection.query(queryStr, function(err, data) {
+                console.log(err);
+
                 // var output = [];
                 // for ( i in data){
                 //   output.push( data[i].post_line_1 + '\r\n' +data[i].post_line_2+ '\r\n' +data[i].post_line_3 );
